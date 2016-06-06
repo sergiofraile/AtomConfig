@@ -22,15 +22,12 @@
     </div>
 
     <div class="item-container">
-      <div class="item-container-header">Temperature Format</div>
-      <div class="item-container-content">
-        <label class="item">
-          Celsius
-          <input type="radio" class="item-radio" name="radio-1" value="a" checked>
-        </label>
-        <label class="item">
-          Fahrenheit
-          <input type="radio" class="item-radio" name="radio-1" value="b">
+      <div class="item-container-header">Temperature format</div>
+      <div id="tabsContainer" class="item-container-content">
+        <label class="item tab-buttons">
+          <a id="tempKelvin" name="temperature" class="tab-button">Kevin</a>
+          <a id="tempCelcius" name="temperature" class="tab-button active">Celcius</a>
+          <a id="tempFahrenheit" name="temperature" class="tab-button">Fahrenheit</a>
         </label>
       </div>
     </div>
