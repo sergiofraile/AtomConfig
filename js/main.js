@@ -15,24 +15,29 @@ function submitHandler() {
 }
 
 function loadOptions() {
-  var $backgroundColorPicker = $('#backgroundColorPicker');
-  var $foregroundColorPicker = $('#foregroundColorPicker');
-  var $tabsContainer = $('#tabsContainer');
+    var $backgroundColorPicker = $('#backgroundColorPicker');
+    var $foregroundColorPicker = $('#foregroundColorPicker');
+    var $tabsContainer = $('#tabsContainer');
 
-  if (localStorage.backgroundColor) {
-    $backgroundColorPicker[0].value = localStorage.backgroundColor;
-    $foregroundColorPicker[0].value = localStorage.foregroundColor;
+    if (localStorage.backgroundColor) {
+        $backgroundColorPicker[0].value = localStorage.backgroundColor;
+    }
 
-    var temperatureValue = localStorage.temperatureFormat;
-    $tabsContainer.find('.tab-button').each(function() {
-          var $tab = $(this);
-          var name = $tab[0].text;
-          $tab.removeClass('active');
-          if (name == temperatureValue) {
-            $tab.addClass('active');
-          }
-    });
-  }
+    if (localStorage.foregroundColor) {
+        $foregroundColorPicker[0].value = localStorage.foregroundColor;
+    }
+
+    if (localStorage.temperatureFormat) {
+        var temperatureValue = localStorage.temperatureFormat;
+        $tabsContainer.find('.tab-button').each(function() {
+            var $tab = $(this);
+            var name = $tab[0].text;
+            $tab.removeClass('active');
+            if (name == temperatureValue) {
+                $tab.addClass('active');
+            }
+        });
+    }
 }
 
 function getAndStoreConfigData() {
@@ -40,7 +45,7 @@ function getAndStoreConfigData() {
   var $foregroundColorPicker = $('#foregroundColorPicker');
   var $tabsContainer = $('#tabsContainer');
 
-  var temperatureValue = 'Celcius';
+  var temperatureValue = 'Celsius';
   $tabsContainer.find('.tab-button').each(function() {
         var $tab = $(this);
         var name = $tab[0].text;
@@ -57,7 +62,7 @@ function getAndStoreConfigData() {
 
   localStorage.backgroundColor = options.backgroundColor;
   localStorage.foregroundColor = options.foregroundColor;
-  localStorage.temperatureFormat = temperatureValue;
+  localStorage.temperatureFormat = tempeCelsiusratureValue;
 
   console.log('Got options: ' + JSON.stringify(options));
   return options;
