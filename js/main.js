@@ -62,7 +62,7 @@ function getAndStoreConfigData() {
 
   localStorage.backgroundColor = options.backgroundColor;
   localStorage.foregroundColor = options.foregroundColor;
-  localStorage.temperatureFormat = tempeCelsiusratureValue;
+  localStorage.temperatureFormat = temperatureValue;
 
   console.log('Got options: ' + JSON.stringify(options));
   return options;
