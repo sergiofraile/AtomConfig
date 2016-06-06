@@ -17,29 +17,47 @@ function submitHandler() {
 function loadOptions() {
   var $backgroundColorPicker = $('#backgroundColorPicker');
   var $foregroundColorPicker = $('#foregroundColorPicker');
-  // var $timeFormatCheckbox = $('#timeFormatCheckbox');
+  var $tabsContainer = $('#tabsContainer');
 
   if (localStorage.backgroundColor) {
     $backgroundColorPicker[0].value = localStorage.backgroundColor;
     $foregroundColorPicker[0].value = localStorage.foregroundColor;
-    // $timeFormatCheckbox[0].checked = localStorage.twentyFourHourFormat === 'true';
+
+    var temperatureValue = localStorage.temperatureFormat;
+    $tabsContainer.find('.tab-button').each(function() {
+          var $tab = $(this);
+          var name = $tab[0].text;
+          $tab.removeClass('active');
+          if (name == temperatureValue) {
+            $tab.addClass('active');
+          }
+    });
   }
 }
 
 function getAndStoreConfigData() {
   var $backgroundColorPicker = $('#backgroundColorPicker');
   var $foregroundColorPicker = $('#foregroundColorPicker');
-  // var $timeFormatCheckbox = $('#timeFormatCheckbox');
+  var $tabsContainer = $('#tabsContainer');
+
+  var temperatureValue = 'Celcius';
+  $tabsContainer.find('.tab-button').each(function() {
+        var $tab = $(this);
+        var name = $tab[0].text;
+        if ($tab.hasClass('active')) {
+            temperatureValue = name;
+        }
+  });
 
   var options = {
     backgroundColor: $backgroundColorPicker.val(),
-    foregroundColor: $foregroundColorPicker.val()
-    // twentyFourHourFormat: $timeFormatCheckbox[0].checked
+    foregroundColor: $foregroundColorPicker.val(),
+    temperatureFormat: temperatureValue
   };
 
   localStorage.backgroundColor = options.backgroundColor;
   localStorage.foregroundColor = options.foregroundColor;
-  // localStorage.twentyFourHourFormat = options.twentyFourHourFormat;
+  localStorage.temperatureFormat = temperatureValue;
 
   console.log('Got options: ' + JSON.stringify(options));
   return options;
